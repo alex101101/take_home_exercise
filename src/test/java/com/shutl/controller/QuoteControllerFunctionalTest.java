@@ -1,6 +1,7 @@
 package com.shutl.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.shutl.Application;
 import com.shutl.model.Quote;
 import org.junit.Before;
@@ -32,6 +33,7 @@ public class QuoteControllerFunctionalTest {
 
     @Before
     public void setup() {
+//        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
         this.mockMvc = webAppContextSetup(this.webApplicationContext).build();
     }
 
@@ -75,5 +77,21 @@ public class QuoteControllerFunctionalTest {
         assertEquals(quote.getPickupPostcode(), "AL15WD");
         assertEquals(quote.getDeliveryPostcode(), "EC2A3LT");
         assertEquals(quote.getPrice(), new Long(305));
+    }
+
+    @Test
+    public void testCarrierPriceList() throws Exception {
+        Quote quoteData = new Quote("SW1A1AA", "EC2A3LT", "bicycle");
+        MvcResult result = this.mockMvc.perform(post("/quote")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(quoteData)))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        Quote quote = objectMapper.readValue(result.getResponse().getContentAsString(), Quote.class);
+        assertEquals(quote.getPickupPostcode(), "SW1A1AA");
+        assertEquals(quote.getDeliveryPostcode(), "EC2A3LT");
+        assertEquals(quote.getPrice(), null);
+        assertEquals(quote.getPriceList().size(), 5);
     }
 }

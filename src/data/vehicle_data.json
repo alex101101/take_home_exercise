@@ -1,0 +1,17 @@
+[
+  {
+    "vehicle": "bicycle", "markup": 10
+  },
+  {
+    "vehicle": "motorbike", "markup": 15
+  },
+  {
+    "vehicle": "parcel_car", "markup": 20
+  },
+  {
+    "vehicle": "small_van", "markup": 30
+  },
+  {
+    "vehicle": "large_van", "markup": 40
+  }
+]
