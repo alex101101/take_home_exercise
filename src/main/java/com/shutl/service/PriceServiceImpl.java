@@ -33,8 +33,7 @@ public class PriceServiceImpl implements PriceService {
         for (Carrier carrier : carriers) {
             for (CarrierService carrierService : carrier.getServices()) {
                 if (carrierService.getVehicles().contains(quote.getVehicle())) {
-                    Long totalPrice = internalPrice
-                            + PriceUtils.getMarkedUpPrice(carrier.getBasePrice(), carrierService.getMarkup());
+                    Long totalPrice = carrier.getBasePrice() + carrierService.getMarkup() + internalPrice;
                     priceList.add(new ServicePrice(carrier.getCarrier(), totalPrice, carrierService.getDeliveryTime()));
                 }
             }

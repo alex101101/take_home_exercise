@@ -15,7 +15,7 @@ In Project root directory run:
 
 Can now send quote requests via the web page or directly.
 
-### Call api directoy
+### Call api directly:
 
 REQUEST:
 ```$xslt
@@ -42,18 +42,18 @@ RESPONSE:
     },
     {
       "service": "RoyalPackages",
-      "price": 380,
+      "price": 383,
       "deliveryTime": 3
     },
     {
-      "service": "RoyalPackages",
-      "price": 393,
-      "deliveryTime": 1
+      "service": "CollectTimes",
+      "price": 403,
+      "deliveryTime": 5
     },
     {
-      "service": "CollectTimes",
-      "price": 401,
-      "deliveryTime": 5
+      "service": "RoyalPackages",
+      "price": 428,
+      "deliveryTime": 1
     }
   ]
 }

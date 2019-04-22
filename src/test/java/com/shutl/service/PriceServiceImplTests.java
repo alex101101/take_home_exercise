@@ -61,6 +61,6 @@ public class PriceServiceImplTests {
 
         assertEquals("CollectTimes", servicePrices.get(0).getService());
         assertEquals(5, servicePrices.get(0).getDeliveryTime());
-        assertEquals(new Long(401), servicePrices.get(0).getPrice());
+        assertEquals(new Long(403), servicePrices.get(0).getPrice());
     }
 }

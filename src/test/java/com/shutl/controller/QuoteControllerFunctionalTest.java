@@ -89,9 +89,11 @@ public class QuoteControllerFunctionalTest {
                 .andReturn();
 
         Quote quote = objectMapper.readValue(result.getResponse().getContentAsString(), Quote.class);
-        assertEquals(quote.getPickupPostcode(), "SW1A1AA");
-        assertEquals(quote.getDeliveryPostcode(), "EC2A3LT");
-        assertEquals(quote.getPrice(), null);
-        assertEquals(quote.getPriceList().size(), 5);
+        assertEquals("SW1A1AA", quote.getPickupPostcode());
+        assertEquals("EC2A3LT", quote.getDeliveryPostcode());
+        assertEquals(null, quote.getPrice());
+        assertEquals(5, quote.getPriceList().size());
+        assertEquals(new Long(348), quote.getPriceList().get(0).getPrice());
+        assertEquals(12, quote.getPriceList().get(0).getDeliveryTime());
     }
 }
